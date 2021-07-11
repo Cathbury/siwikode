@@ -1,0 +1,221 @@
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #2C786C;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #004445;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+main .layout-left, main .layout-right {
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  position: relative;
+}
+
+main .layout-left {
+  background-color: #555ca8;
+  z-index: 2;
+  -webkit-animation: loading 1s cubic-bezier(0.86, 0.46, 0.83, 0.67);
+          animation: loading 1s cubic-bezier(0.86, 0.46, 0.83, 0.67);
+  -webkit-transition: -webkit-animation 200ms;
+  transition: -webkit-animation 200ms;
+  transition: animation 200ms;
+  transition: animation 200ms, -webkit-animation 200ms;
+}
+
+main .layout-left .logo {
+  width: 150px;
+}
+
+main .layout-right {
+  z-index: 1;
+}
+
+main .layout-right form {
+  background-color: white;
+  padding: 4rem;
+  -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+main .layout-right .container-input {
+  display: -ms-grid;
+  display: grid;
+}
+
+main .layout-right .container-input p {
+  margin-top: 15px;
+  font-size: 12px;
+}
+
+main .layout-right .container-input p a {
+  color: #555ca8;
+}
+
+main .layout-right .cancel {
+  margin-top: 15px;
+  border: 1px solid #555ca8;
+  border-radius: 5px;
+  padding: 7px !important;
+  width: 300px;
+  color: #555ca8;
+  -webkit-transition: 200ms;
+  transition: 200ms;
+  font-size: 14px;
+}
+
+main .layout-right .cancel:hover {
+  color: white;
+  background: #555ca8 !important;
+  -webkit-filter: brightness(95%);
+          filter: brightness(95%);
+  -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+  font-weight: 500;
+}
+
+main .layout-right .password {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .layout-right .password label {
+  font-size: 12px;
+}
+
+main .layout-right .password .checkbox input[type="checkbox"] {
+  -webkit-transform: translateY(-5px) translateX(-30px);
+          transform: translateY(-5px) translateX(-30px);
+  opacity: 0;
+  z-index: 1;
+  position: absolute;
+  border: 1px solid red;
+}
+
+main .layout-right .password .checkbox .mata, main .layout-right .password .checkbox .buta {
+  position: absolute;
+  z-index: 0;
+  -webkit-transition: 200ms;
+  transition: 200ms;
+  -webkit-transform: translateY(-6px) translateX(-33px);
+          transform: translateY(-6px) translateX(-33px);
+}
+
+main .layout-right .password .checkbox .mata {
+  opacity: 1;
+}
+
+main .layout-right .password .checkbox .buta {
+  opacity: 0;
+}
+
+.labelMovingTop {
+  -webkit-transform: translateY(-22px) translateX(-10px);
+          transform: translateY(-22px) translateX(-10px);
+  font-size: 12px !important;
+  padding: 0 10px;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.d-none {
+  display: none !important;
+}
+
+.form-group {
+  position: relative;
+}
+
+.form-control:focus {
+  border-color: #555ca8;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  outline: 0 none;
+}
+
+small {
+  padding: 0 1.3rem;
+}
+
+h1 {
+  font-weight: bold;
+  color: #fff;
+  font-size: 64px;
+}
+
+h2, legend {
+  font-size: 36px;
+  color: #555ca8;
+  font-weight: 600;
+}
+
+h4 {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+@media screen and (max-width: 767px) {
+  .layout-left, .layout-right {
+    height: 100vh !important;
+  }
+  h1 {
+    font-weight: bold;
+    color: #555ca8;
+    font-size: 55px;
+    letter-spacing: 0.05em;
+  }
+  h4 {
+    font-size: 21px;
+    color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+@-webkit-keyframes loading {
+  0% {
+    width: 100vw;
+  }
+  100% {
+    width: 57vw;
+  }
+}
+
+@keyframes loading {
+  0% {
+    width: 100vw;
+  }
+  100% {
+    width: 57vw;
+  }
+}
+/*# sourceMappingURL=ourStyle.css.map */

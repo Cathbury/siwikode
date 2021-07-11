@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(48, 71, 94, 0.5);
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(48, 71, 94, 0.8);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box !important;
+          box-sizing: border-box !important;
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin-bottom: 0;
+}
+
+h1 {
+  font-size: 54px;
+  font-weight: bold;
+  color: white;
+}
+
+h2, legend {
+  font-size: 36px;
+  font-weight: 700;
+  color: #25485e;
+}
+
+h4 {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+main .layout-left, main .layout-right {
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+main .layout-left {
+  position: absolute;
+  z-index: 2;
+  top: 30px;
+  left: 30px;
+  -webkit-animation: loading 1s cubic-bezier(0.86, 0.46, 0.83, 0.67);
+          animation: loading 1s cubic-bezier(0.86, 0.46, 0.83, 0.67);
+  -webkit-transition: -webkit-animation 200ms;
+  transition: -webkit-animation 200ms;
+  transition: animation 200ms;
+  transition: animation 200ms, -webkit-animation 200ms;
+}
+
+main .layout-left .logo {
+  width: 100px;
+}
+
+main .layout-left header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  grid-gap: 20px;
+}
+
+main .layout-right {
+  height: 100vh;
+  background-color: #25485e;
+  z-index: 1;
+}
+
+main .backgroundBanner {
+  background: #25485e;
+}
+
+.d-none {
+  display: none !important;
+}
+
+@media screen and (max-width: 767px) {
+  .layout-left, .layout-right {
+    height: 100vh !important;
+  }
+  h1 {
+    font-size: 55px;
+    font-weight: bold;
+    color: #25485e;
+    letter-spacing: 0.05em;
+  }
+  h4 {
+    font-size: 21px;
+    font-weight: false;
+    color: #333;
+  }
+}
+/*# sourceMappingURL=ourAuthStyle.css.map */

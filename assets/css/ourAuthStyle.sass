@@ -1,0 +1,63 @@
+@import 'mixin.sass'
+
+body
+    // font-family: 'Quicksand', sans-serif
+
+h1
+    @include fontSizeWeightColor(54px, bold , white)
+    
+h2, legend
+    @include fontSizeWeightColor(36px, 700 , #25485e)
+    
+h4
+    color: rgba(255, 255, 255, 0.4)
+// ================================ Login Registrasi
+main 
+    .layout-left, .layout-right
+        @include displayCenter(grid)
+
+    .layout-left
+        position: absolute
+        z-index: 2
+        top: 30px
+        left: 30px
+        animation: loading 1s cubic-bezier(.86,.46,.83,.67)
+        transition: animation 200ms
+        .logo
+            width: 100px
+
+        header
+            @include displayCenter(flex)
+            grid-gap: $gapElementBig
+            
+
+    .layout-right
+        height: 100vh
+        background-color: #25485e
+        z-index: 1
+    
+    .backgroundBanner
+        background: #25485e
+// ================================ SPAWN CLASS
+.d-none 
+    display: none!important
+
+// ============================= Media Screen
+@media screen and (max-width:767px)
+    .layout-left, .layout-right
+        height: 100vh!important
+
+    h1
+        @include fontSizeWeightColor(55px, bold , #25485e)
+        letter-spacing: 0.05em
+
+    h4
+        @include fontSizeWeightColor(21px, false , $fontBlack)
+
+// ============================= Keyframes
+// @keyframes loading
+//     0%
+//         width: 100vw
+        
+//     100%
+//         width: 57vw

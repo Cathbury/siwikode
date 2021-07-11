@@ -1,0 +1,166 @@
+@import 'mixin.sass'
+
+html 
+    scroll-behavior: smooth
+
+input,select, textarea
+    font-size: 14px!important
+    transition: 200ms
+
+input[type="text"], 
+input[type="number"], 
+input[type="email"], 
+input[type="password"], 
+input[type="submit"],
+a.buttonCancelForm, select
+    @include widthHeight(100%, 40px!important)
+    @include paddingBorderRadius($paddingInput , $radiusElement)
+
+input::placeholder 
+    font-size: 14px
+
+input[type="submit"] 
+    @include fontSizeWeightColor(false, 500 , white)
+    transition: 200ms
+    background: #30475e!important
+    &:hover 
+        filter: brightness(95%)
+        box-shadow: $myshadow
+        transform: translateY(-2px)
+
+label.ourLabel
+    @include fontSizeWeightColor(14px , 500 , $fontBlack)
+    position: absolute
+    top: 9px
+    left: 1.3rem
+    transition: 200ms
+    cursor: auto
+
+label.labelMovingTop, label.selectLabel
+    @include paddingBorderRadius(0 10px , $radiusElement)
+    transform: translateY(-22px) translateX(-10px)
+    font-size: 12px!important
+    background-color: rgba(#fff, 1)
+    cursor: context-menu 
+
+form 
+    @include widthHeight(400px ,false )
+    @include paddingBorderRadius($paddingForm, $radiusElement)
+    background-color: white
+    box-shadow: $shadow-center
+
+form > .container-input 
+    @include displayGap(grid , $gapInput)
+    p
+        margin-top: 15px 
+        font-size: 12px
+    a.linkSignUp
+        color: #30475e
+
+main > form
+    width: 100%
+
+    
+small 
+    padding: 0 1.3rem
+
+legend
+    @include fontSizeWeightColor(36px, bold!important , #30475e)
+    text-align: center
+
+.password // Input Password With Show Hide Password
+    display: flex
+    align-items: center
+    label 
+        font-size: 12px
+
+    .checkbox
+        input[type="checkbox"], .mata, .buta
+            position: absolute
+
+        input[type="checkbox"]
+            @include opacityZ-Index(0, 1)
+            transform: translateY(-5px) translateX(-30px)
+
+        .mata, .buta
+            z-index: 0 
+            transition: 200ms
+            transform: translateY(-6px) translateX(-33px)
+        .mata
+            opacity: 1
+                            
+        .buta
+            opacity: 0
+
+div.inputUploadPhotoProfile
+    @include displayCenter(flex)
+    position: relative
+    div#imageInForm
+        position: relative
+        padding: $paddingElement
+        transition: 200ms
+
+    img
+        width: 200px
+        height: 200px
+        border-radius: 100%
+        object-fit: cover
+        object-position: center
+        box-shadow: $myshadow
+        transition: 200ms
+
+    input.imageInput
+        @include absoluteCenterXY()
+        width: 200px
+        opacity: 0
+        cursor: pointer!important
+
+    div.iconCamera
+        @include displayCenter(grid)
+        @include widthHeight(40px, 40px )
+        box-shadow: $myshadow
+        background: #30475e
+        border-radius: 50%
+        position: absolute
+        bottom: 10px
+        left: 58%
+        z-index: 10
+        cursor: pointer
+        
+    svg.bi-camera-fill
+        cursor: pointer
+
+div.buttonFormOneColumn
+    @include displayCenter(grid)
+    grid-gap: $gapInput
+div.buttonForm
+    @include displayCenter(grid)
+    @include gridTemplateGap(column, 1fr 1fr, $gapInput)
+a.buttonCancelForm // Berada di halaman Registrasi
+    @include displayCenter(grid)
+    @include fontSizeWeightColor(14px, 500, #30475e)
+    @include paddingBorderRadius($paddingInput , $radiusElement)
+    border: 1px solid #30475e
+    transition: 200ms
+
+a.buttonCancelForm:hover
+    @include fontSizeWeightColor(false , 500 , white)
+    background: #30475e!important
+    filter: brightness(95%)
+    box-shadow: $myshadow
+    transform: translateY(-2px)
+    
+// =============== Spawn Class
+.form-group
+    position: relative
+
+.form-control:focus 
+    border-color: #30475e
+    box-shadow: none!important
+    outline: 0 none
+
+.opacityAndFilterForImageInput
+    opacity: 1!important
+
+.brightnessDown
+    filter: brightness(80%)!important

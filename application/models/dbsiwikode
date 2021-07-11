@@ -1,0 +1,542 @@
+-- phpMyAdmin SQL Dump
+-- version 5.0.2
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Waktu pembuatan: 11 Jul 2021 pada 08.19
+-- Versi server: 10.4.14-MariaDB
+-- Versi PHP: 7.4.10
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `dbsiwikode`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `jenis_kuliner`
+--
+
+CREATE TABLE `jenis_kuliner` (
+  `id` int(11) NOT NULL,
+  `nama_kuliner` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `jenis_kuliner`
+--
+
+INSERT INTO `jenis_kuliner` (`id`, `nama_kuliner`) VALUES
+(1, 'Kedai/Cafe'),
+(2, 'Restaurant'),
+(3, 'Pasar Kaget');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `jenis_rekreasi`
+--
+
+CREATE TABLE `jenis_rekreasi` (
+  `id` int(11) NOT NULL,
+  `nama_rekreasi` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `jenis_rekreasi`
+--
+
+INSERT INTO `jenis_rekreasi` (`id`, `nama_rekreasi`) VALUES
+(1, 'Argo Wisata'),
+(2, 'Taman Wisata'),
+(3, 'Museum'),
+(4, 'Water Park / Kolam Renang');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `jenis_wisata`
+--
+
+CREATE TABLE `jenis_wisata` (
+  `id` int(11) NOT NULL,
+  `jenis` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `jenis_wisata`
+--
+
+INSERT INTO `jenis_wisata` (`id`, `jenis`) VALUES
+(1, 'Wisata Rekreasi'),
+(2, 'Wisata Kuliner');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `kategori`
+--
+
+CREATE TABLE `kategori` (
+  `id` int(11) NOT NULL,
+  `nama_kategori` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `kategori`
+--
+
+INSERT INTO `kategori` (`id`, `nama_kategori`) VALUES
+(1, 'Argo Wisata'),
+(2, 'Taman Wisata'),
+(3, 'Museum'),
+(4, 'Water Park'),
+(5, 'Kedai/Cafe'),
+(6, 'Restaurant'),
+(7, 'Pasar');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `profesi`
+--
+
+CREATE TABLE `profesi` (
+  `id` int(11) NOT NULL,
+  `nama_profesi` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `profesi`
+--
+
+INSERT INTO `profesi` (`id`, `nama_profesi`) VALUES
+(1, 'Artist'),
+(2, 'Pejabat'),
+(3, 'Mahasiswa'),
+(4, 'Pegawai Swasta'),
+(5, 'Umum');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `testimoni`
+--
+
+CREATE TABLE `testimoni` (
+  `id` int(11) NOT NULL,
+  `nama_testimoni` varchar(45) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `wisata_id` int(11) NOT NULL,
+  `profesi_id` int(11) NOT NULL,
+  `rating` smallint(6) DEFAULT NULL,
+  `komentar` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `testimoni_wisata`
+--
+
+CREATE TABLE `testimoni_wisata` (
+  `id` int(11) NOT NULL,
+  `nama_testimoni` varchar(128) NOT NULL,
+  `email` varchar(128) NOT NULL,
+  `wisata_depok_id` varchar(128) NOT NULL,
+  `profesi_id` varchar(128) NOT NULL,
+  `rating` smallint(6) NOT NULL,
+  `komentar` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `testimoni_wisata`
+--
+
+INSERT INTO `testimoni_wisata` (`id`, `nama_testimoni`, `email`, `wisata_depok_id`, `profesi_id`, `rating`, `komentar`) VALUES
+(6, 'Pa Subur', 'subur@gmail.com', '5', '1', 5, 'keren bouz'),
+(7, 'sdfds', 'dsfdas', '5', '2', 2, 'dsafds'),
+(8, 'Adriansyah Mahesa', 'mahesa@gmail.com', '\r\n&amp;lt;div style=', '3', 4, 'Biaya masuk yang sangat bersahabat dengan kantong mahasiswa, sangat direkomendasikan untuk mengisi liburan'),
+(12, 'Adriansyah Mahesa', 'mahesa@gmail.com', '12', '3', 4, 'Biaya masuk yang sangat bersahabat dengan kantong mahasiswa, sangat direkomendasikan untuk mengisi liburan.'),
+(15, 'Maya Catherine', 'maya@gmail.com', '17', '3', 5, 'Tempat wisata bersih dan asri. Cocok banget deh buat kalian yang mau refreshing setelah sibuk berkegiatan.'),
+(17, 'Febi Febiyanti', 'febi@gmail.com', '15', '3', 5, 'Taman yang asri dan ngga terlalu jauh dari perkotaan, tapi aku rekomendasiin banget buat yang seneng olahraga.'),
+(19, 'Andi Subendi', 'andi@gmail.com', '18', '4', 5, 'Hidangan yang disajikan pas banget di lidah orang indonesia, mantap…'),
+(21, 'Adam Budiyono', 'adam@gmail.com', '19', '3', 4, 'Suasananya sejuk dan tenang, hidangan yang disajikan juga beragam. Cocok bener buat kantong mahasiswa.'),
+(23, 'Kevin Mulyono', 'kevinmul@gmail.com', '20', '4', 5, 'Menunya banyak dan beragam, soal rasa jangan ditanya pastinya terbaik lah… mantap.....');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(128) NOT NULL,
+  `email` varchar(128) NOT NULL,
+  `image` varchar(128) NOT NULL,
+  `profesi` varchar(128) DEFAULT NULL,
+  `deskripsi` varchar(80) DEFAULT NULL,
+  `password` varchar(256) NOT NULL,
+  `role_id` int(11) NOT NULL,
+  `is_active` int(1) NOT NULL,
+  `date_created` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `email`, `image`, `profesi`, `deskripsi`, `password`, `role_id`, `is_active`, `date_created`) VALUES
+(19, 'Dea Rhamanti', 'dearhamanti@gmail.com', 'default2.png', 'Mahasiswa', '', '$2y$10$scgzXs6eq4gJMfvC2VGwleXne1iykfKbhO1fG9.yGWZfE/TXy3IvC', 1, 1, 1625625421),
+(20, 'Sabiq Muhammad', 'sabiqmuhammad98@gmail.com', 'default.png', NULL, NULL, '$2y$10$nnPHFkTMfFzyVZDx1HCrw.COWaR6zBLfpXKhOA/WYJuzIi4QPGP0e', 2, 1, 1625668257),
+(21, 'Adriansyah Mahesa', 'mahesa@gmail.com', 'default.png', NULL, NULL, '$2y$10$idalSU8v33RWKLP2D1ZmRefQC7i3inA80QQkCt0X8smEOr3n0Jqfe', 2, 1, 1625734375),
+(22, 'Maya Catherine', 'maya@gmail.com', 'default.png', NULL, NULL, '$2y$10$lL1Amr8M2R13E0JufE9lTeFotLN8HQcG2DkhNWLkwe.rN6xqrh.Ty', 2, 1, 1625735615),
+(23, 'Febi Febiyanti', 'febi@gmail.com', 'default.png', NULL, NULL, '$2y$10$uxAY9PdFLUYGYoZq2x/HbO94RnkjT6.ug7SkxvWSXhs4aPKLEpyuW', 2, 1, 1625735764);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `users_access_menu`
+--
+
+CREATE TABLE `users_access_menu` (
+  `id` int(11) NOT NULL,
+  `role_id` int(11) NOT NULL,
+  `menu_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `users_access_menu`
+--
+
+INSERT INTO `users_access_menu` (`id`, `role_id`, `menu_id`) VALUES
+(1, 1, 1),
+(2, 1, 2),
+(3, 2, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `users_menu`
+--
+
+CREATE TABLE `users_menu` (
+  `id` int(11) NOT NULL,
+  `menu` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `users_menu`
+--
+
+INSERT INTO `users_menu` (`id`, `menu`) VALUES
+(1, 'Admin'),
+(2, 'User');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `users_role`
+--
+
+CREATE TABLE `users_role` (
+  `id` int(11) NOT NULL,
+  `role` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `users_role`
+--
+
+INSERT INTO `users_role` (`id`, `role`) VALUES
+(1, 'administrator'),
+(2, 'member');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `users_sub_menu`
+--
+
+CREATE TABLE `users_sub_menu` (
+  `id` int(11) NOT NULL,
+  `menu_id` int(11) NOT NULL,
+  `title` varchar(128) NOT NULL,
+  `url` varchar(128) NOT NULL,
+  `icon` varchar(128) NOT NULL,
+  `is_active` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `users_sub_menu`
+--
+
+INSERT INTO `users_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active`) VALUES
+(1, 1, 'Dashboard', 'admin', 'fas fa-tachometer-alt', 1),
+(2, 2, 'My Profile', 'user', 'fas fa-user', 1),
+(3, 1, 'Wisata', 'wisata', 'fas fa-map-marked-alt', 1),
+(5, 1, 'Testimoni', 'testimoni', 'fas fa-star-half-alt', 1),
+(6, 1, 'Menu Management', 'menu/index', 'fas fa-bars', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `wisata`
+--
+
+CREATE TABLE `wisata` (
+  `id` int(11) NOT NULL,
+  `nama_wisata` varchar(100) DEFAULT NULL,
+  `deskripsi` text DEFAULT NULL,
+  `jenis_rekreasi_id` int(11) NOT NULL,
+  `fasilitas` text DEFAULT NULL,
+  `bintang` smallint(6) DEFAULT NULL,
+  `kontak` varchar(45) DEFAULT NULL,
+  `alamat` varchar(45) DEFAULT NULL,
+  `latlong` varchar(20) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `web` varchar(45) DEFAULT NULL,
+  `jenis_kuliner_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `wisata_depok`
+--
+
+CREATE TABLE `wisata_depok` (
+  `id` int(11) NOT NULL,
+  `image` varchar(128) NOT NULL,
+  `nama_wisata` varchar(128) NOT NULL,
+  `deskripsi` varchar(256) NOT NULL,
+  `jenis_wisata_id` varchar(128) NOT NULL,
+  `kategori_id` varchar(128) DEFAULT NULL,
+  `fasilitas` varchar(128) NOT NULL,
+  `rating` smallint(6) NOT NULL,
+  `kontak` varchar(128) NOT NULL,
+  `alamat` varchar(128) NOT NULL,
+  `latlong` varchar(128) NOT NULL,
+  `email` varchar(128) NOT NULL,
+  `url` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `wisata_depok`
+--
+
+INSERT INTO `wisata_depok` (`id`, `image`, `nama_wisata`, `deskripsi`, `jenis_wisata_id`, `kategori_id`, `fasilitas`, `rating`, `kontak`, `alamat`, `latlong`, `email`, `url`) VALUES
+(12, 'Depok-Fantasi-Waterpark.jpg', 'Aladdin Waterpark', 'Fantasi Waterpark - Aladdin. Taman bermain air luas ini bertema Arab dan memiliki beragam seluncur, kolam renang &amp; penyewaan pelampung.', '1', '4', 'seluncur, kolam renang &amp; penyewaan pelampung.', 0, '021 7750 5050', 'Lokasi: Jl. Boulevard Grand Depok City, Tirtajaya, Kec. Sukmajaya, Kota Depok, Jawa Barat.', '-6.9447 107.7219', 'aladdinwaterpark@gmail.com', 'aladdinwaterpark.com'),
+(15, 'lembah_gurame1.jpg', 'Taman Lembah Gurame', 'Taman ini merupakan taman umum yang ada di Depok. Taman Lembah Gurame ini menjadi taman terbaik untuk tempat berolahraga tiap harinya. ', '1', '2', 'Sarana fitnes untuk umum, kolam ikan, taman pancuran air, lapangan futsal dan basket.\r\n', 0, '081250608070', 'Jl. Nangka Raya No. 68, Depok Jaya, Kec. Pancoran Mas, Depok, Jawa Barat.', '-6.8337 907.7413', 'tamanlembahgurame@gmail.com', 'tamanlembahgurame.com'),
+(17, 'download.jpg', 'D\'Kandang Amazing Farm', 'D’Kandang Amazing Farm yang terletak di Depok, Jawa Barat merupakan suatu tempat wisata berisikan dunia peternakan dan pertanian.', '1', '1', 'Taman pancuran air, penyewaan kuda untuk berkeliling, belajar memerah susu.\r\n', 0, '021 5665 7773', 'Jl. Penarikan No.RT 01 / 02, Pasir Putih, Kec. Sawangan, Kota Depok.', '-7.4112 103.7534', 'dkandangfarm@gmail.com', 'd\'kandangfarm.com'),
+(18, 'Nasi-Timbel-Si-Teteh.jpg', 'Nasi Timbel Si Teteh', 'Warung nasi timbel Si Teteh bisa menjadi pilihan tepat bagi kamu yang suka dengan masakan khas sunda. Warung makan yang terletak di Jalan Iskandar 48, Sukmajaya ini menyediakan menu nasi khas sunda dengan berbagai pilihan lauknya.', '2', '6', 'Saung diatas kolam ikan dan taman pancuran air.\r\n', 0, '021  9980 8099', 'Jl. Tole Iskandar No.48, Sukmajaya, Kec. Sukmajaya, Kota Depok.', '-7.8923 907.6547', 'nasitimbelteteh@gmail.com', 'nasitimbelteteh.com'),
+(19, 'narsum.jpg', 'Rumah Makan Saung Telaga', 'Tempat makan saung di Depok yang pertama adalah Rumah Makan Saung Talaga. Saung-saung makan yang ada di sini berdiri di atas danau. Saung Talaga menyajikan masakan diantaranya ikan gurame, ikan mas, udang, ayam, dan sop iga.', '2', '6', 'Saung yang memberikan kesan tenang dan sejuk, serta kicauan burung.', 0, '021 6565 0890', 'Jl. Raya Sawangan No. 1, Pancoran Mas, Depok', '-6.2154 123.0612', 'rumahmakansaungtelaga@gmail.com', 'rumahmakansaungtelaga.com'),
+(20, 'Pondok-Laras.jpg', 'Pondok Laras', 'Pondok Laras mengusung konsep makan di atas permukaan air tepatnya di saung tradisional. Bukan hanya saung semata, disekeliling kolam buatan terdapat pula pepohonan rindang yang menjadikan suasana menjadi lebih asri dan sejuk. ', '2', '6', 'Saung diatas kolam ikan dengan pepohonan yang rindang di sekelilingnya.', 0, '021 3340 5678', 'Jl. Akses UI No.2, Kec. Cimanggis, Kota Depok.', '-7.6132 865.0125', 'pondoklarasdepok@gmail.com', 'pondoklarasdepok.com');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indeks untuk tabel `jenis_kuliner`
+--
+ALTER TABLE `jenis_kuliner`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `jenis_rekreasi`
+--
+ALTER TABLE `jenis_rekreasi`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `jenis_wisata`
+--
+ALTER TABLE `jenis_wisata`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `kategori`
+--
+ALTER TABLE `kategori`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `profesi`
+--
+ALTER TABLE `profesi`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `testimoni`
+--
+ALTER TABLE `testimoni`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_testimoni_wisata1_idx` (`wisata_id`),
+  ADD KEY `fk_testimoni_profesi1_idx` (`profesi_id`);
+
+--
+-- Indeks untuk tabel `testimoni_wisata`
+--
+ALTER TABLE `testimoni_wisata`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `users_access_menu`
+--
+ALTER TABLE `users_access_menu`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `users_menu`
+--
+ALTER TABLE `users_menu`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `users_role`
+--
+ALTER TABLE `users_role`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `users_sub_menu`
+--
+ALTER TABLE `users_sub_menu`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `wisata`
+--
+ALTER TABLE `wisata`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_wisata_jenis_kuliner1_idx` (`jenis_kuliner_id`),
+  ADD KEY `jenis_rekreasi_id` (`jenis_rekreasi_id`);
+
+--
+-- Indeks untuk tabel `wisata_depok`
+--
+ALTER TABLE `wisata_depok`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT untuk tabel yang dibuang
+--
+
+--
+-- AUTO_INCREMENT untuk tabel `jenis_kuliner`
+--
+ALTER TABLE `jenis_kuliner`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT untuk tabel `jenis_rekreasi`
+--
+ALTER TABLE `jenis_rekreasi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT untuk tabel `jenis_wisata`
+--
+ALTER TABLE `jenis_wisata`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `kategori`
+--
+ALTER TABLE `kategori`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT untuk tabel `profesi`
+--
+ALTER TABLE `profesi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT untuk tabel `testimoni`
+--
+ALTER TABLE `testimoni`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+
+--
+-- AUTO_INCREMENT untuk tabel `testimoni_wisata`
+--
+ALTER TABLE `testimoni_wisata`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
+-- AUTO_INCREMENT untuk tabel `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT untuk tabel `users_access_menu`
+--
+ALTER TABLE `users_access_menu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT untuk tabel `users_menu`
+--
+ALTER TABLE `users_menu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `users_role`
+--
+ALTER TABLE `users_role`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `users_sub_menu`
+--
+ALTER TABLE `users_sub_menu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT untuk tabel `wisata_depok`
+--
+ALTER TABLE `wisata_depok`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+--
+
+--
+-- Ketidakleluasaan untuk tabel `testimoni`
+--
+ALTER TABLE `testimoni`
+  ADD CONSTRAINT `fk_testimoni_profesi1` FOREIGN KEY (`profesi_id`) REFERENCES `profesi` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_testimoni_wisata1` FOREIGN KEY (`wisata_id`) REFERENCES `wisata` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Ketidakleluasaan untuk tabel `wisata`
+--
+ALTER TABLE `wisata`
+  ADD CONSTRAINT `fk_wisata_jenis_kuliner1` FOREIGN KEY (`jenis_kuliner_id`) REFERENCES `jenis_kuliner` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `wisata_ibfk_1` FOREIGN KEY (`jenis_rekreasi_id`) REFERENCES `jenis_rekreasi` (`id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
